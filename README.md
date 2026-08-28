@@ -5,7 +5,7 @@
 
 ---
 
-![Spasht Hero](https://raw.githubusercontent.com/Aashikhandelwal05/Spasht/main/docs/landing.png)
+![Spasht Hero](docs/landing.png)
 
 ---
 
@@ -20,22 +20,22 @@ Spasht is a **mobile-first web app** that acts as a calm, plain-language civic g
 ## 📸 Screenshots
 
 ### Landing Page
-![Landing Page](https://raw.githubusercontent.com/Aashikhandelwal05/Spasht/main/docs/landing.png)
+![Landing Page](docs/landing.png)
 
 ### How It Works
-![How It Works](https://raw.githubusercontent.com/Aashikhandelwal05/Spasht/main/docs/how_it_works.png)
+![How It Works](docs/how_it_works.png)
 
 ### Step 1 — Tell Us What You Need
-![Step 1 – Intake](https://raw.githubusercontent.com/Aashikhandelwal05/Spasht/main/docs/step1_intake.png)
+![Step 1 – Intake](docs/step1_intake.png)
 
 ### Step 2 — Service Recommendation
-![Step 2 – Service](https://raw.githubusercontent.com/Aashikhandelwal05/Spasht/main/docs/step2_service.png)
+![Step 2 – Service](docs/step2_service.png)
 
 ### Step 3 — Readiness Check
-![Step 3 – Readiness Check](https://raw.githubusercontent.com/Aashikhandelwal05/Spasht/main/docs/step3_readiness.png)
+![Step 3 – Readiness Check](docs/step3_readiness.png)
 
 ### Step 4 — You're Ready to Apply ✅
-![Step 4 – Success](https://raw.githubusercontent.com/Aashikhandelwal05/Spasht/main/docs/step4_success.png)
+![Step 4 – Success](docs/step4_success.png)
 
 ---
 
