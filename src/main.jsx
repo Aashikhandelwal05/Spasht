@@ -17,7 +17,6 @@ import {
   Pencil,
   RotateCcw,
   ShieldAlert,
-  Sparkles,
   X,
 } from 'lucide-react';
 import heroScene from './assets/civic-service-scene.svg';
@@ -43,19 +42,19 @@ const requirementPresets = [
   {
     id: 'ready',
     title: 'Ready example',
-    duration: '3+ years',
+    duration: '10+ years',
     docs: ['Aadhaar', 'Electricity bill', 'School leaving certificate'],
   },
   {
     id: 'short',
     title: 'Short residence',
-    duration: 'Less than 1 year',
+    duration: 'Less than 5 years',
     docs: ['Aadhaar', 'Electricity bill', 'School leaving certificate'],
   },
   {
     id: 'missing',
     title: 'Missing proof',
-    duration: '3+ years',
+    duration: '10+ years',
     docs: ['Aadhaar', 'School leaving certificate'],
   },
 ];
@@ -149,10 +148,10 @@ function classifyService(state) {
 
 function checkRequirements(duration, docs) {
   const issues = [];
-  if (duration !== '3+ years') {
+  if (duration !== '10+ years') {
     issues.push({
       type: 'duration',
-      text: `You have lived at this address for ${duration.toLowerCase()}, which is less than this demo's 3-year check.`,
+      text: `You have lived at this address for ${duration.toLowerCase()}, which is less than the 10-year continuous residence requirement.`,
     });
   }
   if (!docs.includes('Aadhaar') || (!docs.includes('Electricity bill') && !docs.includes('Ration card'))) {
@@ -167,6 +166,7 @@ function checkRequirements(duration, docs) {
     why: 'Submitting without enough proof can lead to delay or rejection during verification.',
     next: [
       'Check whether you have an older electricity bill, ration card, school record, or rent proof with this address.',
+      "Check if you have documents in a parent's name establishing residence at this address.",
       'Ask the service center whether a supporting affidavit route is accepted for your situation.',
       'You can update your answers here or continue exploring the demo process.',
     ],
@@ -201,7 +201,7 @@ function validateNames(applicationName, documentName) {
       status: 'near',
       distance,
       message: 'The names are very similar, but the spelling is different.',
-      why: 'Small differences in names can cause problems during document verification.',
+      why: 'Phonetic spelling differences across records frequently trigger administrative objection memos (कमी पूर्ति) during government review.',
     };
   }
   return {
@@ -272,10 +272,14 @@ function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
     <header className="siteHeader">
-      <a className="brandMark" href="#top" aria-label="Spasht home">
-        <Sparkles size={21} aria-hidden="true" />
+      <div className="logo" role="link" tabIndex="0" onClick={() => window.location.hash = 'top'} onKeyDown={(event) => event.key === 'Enter' && (window.location.hash = 'top')} aria-label="Spasht home">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="16" cy="16" r="13" fill="#B23A34" />
+          <circle cx="16" cy="16" r="12" stroke="#8F2F2A" strokeWidth="1" />
+          <path d="M10.5 16.2L14.2 19.8L21.8 11.9" stroke="#FAFAF8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
         <span>Spasht</span>
-      </a>
+      </div>
       <button className="menuButton" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-label="Open navigation">
         {open ? <X size={22} /> : <Menu size={22} />}
       </button>
@@ -293,10 +297,10 @@ function Hero() {
   return (
     <section className="hero sectionShell" id="top">
       <div className="heroCopy">
-        <Badge>Hackathon demo</Badge>
-        <h1>Clear help for public service applications.</h1>
+        <Badge>PROTOTYPE // BUILD WHAT MOVES INDIA</Badge>
+        <h1>Don&rsquo;t Just Apply. Be Ready to Apply.</h1>
         <p>
-          Spasht guides citizens from a plain-language need to the right service, checks readiness, and prepares a simple review packet before they use an official channel.
+          Spasht guides citizens from plain language to the right service, checks document readiness, and flags mismatches before official submission.
         </p>
         <div className="heroActions">
           <a className="buttonLink primary" href="#start">Try the Domicile Certificate demo</a>
@@ -540,7 +544,7 @@ function Requirements({ state, setState }) {
     <div className="screen">
       <Badge>Mock rule</Badge>
       <h2>Let us check if you are ready.</h2>
-      <p className="rule">For this demo, we check 3+ years of residence and basic identity plus address proof.</p>
+      <p className="rule">For this demo, we check 10+ years of continuous residence and basic identity plus address proof.</p>
       <div className="quickGroup compact">
         {requirementPresets.map((preset) => (
           <button key={preset.id} onClick={() => usePreset(preset)}>{preset.title}</button>
@@ -548,7 +552,7 @@ function Requirements({ state, setState }) {
       </div>
       <h3>How long have you lived at this address?</h3>
       <div className="choiceGrid">
-        {['Less than 1 year', '1-2 years', '3+ years'].map((option) => (
+        {['Less than 5 years', '5-9 years', '10+ years'].map((option) => (
           <button key={option} className={state.duration === option ? 'selected' : ''} onClick={() => setState((s) => ({ ...s, duration: option }))}>{option}</button>
         ))}
       </div>
@@ -582,7 +586,7 @@ function RequirementGap({ gap, setState }) {
       </ul>
       <Badge>Mock guidance</Badge>
       <div className="split">
-        <Button variant="secondary" onClick={() => setState((s) => ({ ...s, duration: '3+ years', docs: ['Aadhaar', 'Electricity bill', 'School leaving certificate'], gap: null }))} icon={Pencil}>Fix answers</Button>
+        <Button variant="secondary" onClick={() => setState((s) => ({ ...s, duration: '10+ years', docs: ['Aadhaar', 'Electricity bill', 'School leaving certificate'], gap: null }))} icon={Pencil}>Fix answers</Button>
         <Button variant="ghost" onClick={() => setState((s) => ({ ...s, step: 3 }))} icon={ChevronRight}>Continue exploring</Button>
       </div>
     </div>
@@ -595,7 +599,7 @@ function Readiness({ setState }) {
       <Badge>Mock pre-check</Badge>
       <h2 style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
         <StampMark size={44} />
-        You&rsquo;re ready to apply.
+        Review Baseline Details
       </h2>
       <p className="lead"><b>Service:</b> Domicile Certificate</p>
       <div className="checklist">
@@ -612,7 +616,7 @@ function Readiness({ setState }) {
           <p>A plain-language summary of your answers, document checklist, and fields to review before using an official service.</p>
         </div>
       </div>
-      <Button onClick={() => setState((s) => ({ ...s, step: 4, started: true }))} icon={FileCheck2}>Start application</Button>
+      <Button onClick={() => setState((s) => ({ ...s, step: 4, started: true }))} icon={FileCheck2}>Check Supporting Documents →</Button>
     </div>
   );
 }
@@ -623,11 +627,11 @@ function FormFill({ state, setState }) {
       <Badge>Mock form</Badge>
       <h2>Review your details.</h2>
       <p className="lead">Do not enter real Aadhaar, PAN, OTP, payment, or password information in this prototype.</p>
-      <FormField label="What is your name?" govt="Applicant name" value={state.name} onChange={(v) => setState((s) => ({ ...s, name: v }))} />
-      <FormField label="Where do you currently live?" govt="Permanent residential address" value={state.address} onChange={(v) => setState((s) => ({ ...s, address: v }))} />
-      <FormField label="How long have you lived there?" govt="Duration of continuous residence" value={state.duration || '3+ years'} onChange={(v) => setState((s) => ({ ...s, duration: v }))} />
-      <FormField label="Why do you need this certificate?" govt="Purpose of application" value={state.purpose} onChange={(v) => setState((s) => ({ ...s, purpose: v }))} />
-      <FormField label="Name shown on uploaded mock document" govt="Supporting document holder name" value={state.documentName} onChange={(v) => setState((s) => ({ ...s, documentName: v }))} />
+      <FormField label="What is your name?" govt="Applicant Name (as per ID)" value={state.name} onChange={(v) => setState((s) => ({ ...s, name: v }))} />
+      <FormField label="Where do you currently live?" govt="Permanent Residential Address" value={state.address} onChange={(v) => setState((s) => ({ ...s, address: v }))} />
+      <FormField label="How long have you lived there?" govt="Duration of Continuous Residence" value={state.duration || '3+ years'} onChange={(v) => setState((s) => ({ ...s, duration: v }))} />
+      <FormField label="Why do you need this certificate?" govt="Purpose of Application" value={state.purpose} onChange={(v) => setState((s) => ({ ...s, purpose: v }))} />
+      <FormField label="Name shown on uploaded mock document" govt="Name on Supporting Document" value={state.documentName} onChange={(v) => setState((s) => ({ ...s, documentName: v }))} />
       <div className="quickGroup compact">
         <button onClick={() => setState((s) => ({ ...s, name: 'Priya Chowdhary', documentName: 'Priya Choudhary' }))}>Near-miss mismatch</button>
         <button onClick={() => setState((s) => ({ ...s, name: 'Priya Chowdhary', documentName: 'Priya Chowdhary' }))}>Clean match</button>
@@ -642,7 +646,7 @@ function FormField({ label, govt, value, onChange }) {
     <label className="field mapped">
       <span>{label}</span>
       <input value={value} onChange={(e) => onChange(e.target.value)} />
-      <small>Mock form field: {govt}</small>
+      <small>{govt}</small>
     </label>
   );
 }
@@ -662,7 +666,7 @@ function Validation({ state, setState }) {
       </div>
       {!clean ? (
         <div className="split">
-          <Button onClick={() => setState((s) => ({ ...s, name: s.documentName, validation: validateNames(s.documentName, s.documentName) }))} icon={Pencil}>Fix application name</Button>
+          <Button onClick={() => setState((s) => ({ ...s, name: s.documentName, validation: validateNames(s.documentName, s.documentName) }))} icon={Pencil}>Attach Name Affidavit (शपथ पत्र)</Button>
           <Button variant="secondary" onClick={() => setState((s) => ({ ...s, documentName: s.name, validation: validateNames(s.name, s.name) }))} icon={FileSearch}>Review document</Button>
         </div>
       ) : (
@@ -700,7 +704,7 @@ function Submission({ state, setState }) {
       </div>
       <div className="checklist">
         {reviewItems.map((item) => (
-          <p key={item}><StampMark size={28} /> {item}</p>
+          <p key={item}><Check className="readyCheck" size={28} aria-hidden="true" /> {item}</p>
         ))}
       </div>
       <div className="demoNotice inline"><span>This button does not connect to eMitra. It opens a mock status screen.</span></div>
@@ -768,15 +772,28 @@ function TrustSection() {
 function Footer() {
   return (
     <footer className="siteFooter">
-      <div>
-        <a className="brandMark" href="#top"><Sparkles size={20} /> <span>Spasht</span></a>
-        <p>Hackathon prototype for a clearer citizen service journey.</p>
+      <div className="footerGrid">
+        <div>
+          <h3>Spasht</h3>
+        </div>
+        <div>
+          <h3>Technical Architecture</h3>
+          <ul>
+            <li>Intent Mapping</li>
+            <li>Deterministic Rules</li>
+            <li>Zero PII</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Reference Pilot</h3>
+          <p>Rajasthan Revenue Code / Domicile readiness workflow.</p>
+          <p className="footerScope">These readiness rules are specific to Rajasthan; other states may have different requirements.</p>
+        </div>
       </div>
-      <p>Mock demo only. Not affiliated with, endorsed by, or operated by eMitra or any government body.</p>
+      <p className="footerDisclaimer">Prototype demonstration only. Not affiliated with, endorsed by, or operated by eMitra or any government body.</p>
     </footer>
   );
 }
-
 function App() {
   return (
     <>
@@ -794,3 +811,6 @@ function App() {
 }
 
 createRoot(document.getElementById('root')).render(<App />);
+
+
+

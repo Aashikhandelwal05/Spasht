@@ -78,7 +78,7 @@ p {
 }
 
 h1 {
-  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   margin-bottom: 22px;
   color: var(--authority);
   font-size: clamp(2.5rem, 12vw, 5.9rem);
@@ -88,7 +88,7 @@ h1 {
 }
 
 h2 {
-  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
@@ -96,6 +96,7 @@ h2 {
 /* ─── Site header ────────────────────────────────────────────────────────── */
 .siteHeader {
   position: sticky;
+  min-width: 0;
   top: 0;
   z-index: 20;
   display: flex;
@@ -110,10 +111,12 @@ h2 {
 
 .brandMark {
   display: inline-flex;
+  flex: 0 1 auto;
+  min-width: 0;
   align-items: center;
   gap: 9px;
   color: var(--authority);
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 700;
   font-size: 1.15rem;
   letter-spacing: 0;
@@ -122,6 +125,27 @@ h2 {
 .brandMark svg {
   color: var(--authority);
   opacity: 0.8;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: #1E293B;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  min-width: 0;
+}
+
+.logo svg {
+  flex: 0 0 auto;
+}
+
+.logo span {
+  color: #1E293B;
 }
 
 .menuButton {
@@ -137,6 +161,7 @@ h2 {
 
 .siteNav {
   position: absolute;
+  min-width: 0;
   top: calc(100% + 8px);
   left: 14px;
   right: 14px;
@@ -401,7 +426,7 @@ h2 {
 .journeyIntro h2 {
   margin: 0;
   color: var(--authority);
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 700;
   font-size: clamp(2rem, 7vw, 3.7rem);
   line-height: 1.04;
@@ -475,7 +500,7 @@ h2 {
   background: var(--authority-soft);
   color: var(--authority);
   font-weight: 700;
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .stepCard h3,
@@ -526,7 +551,7 @@ h2 {
 
 .demoStats strong {
   color: var(--authority);
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1.45rem;
 }
 
@@ -578,7 +603,7 @@ h2 {
   color: var(--authority);
   font-size: 0.92rem;
   text-align: right;
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .progressTrack {
@@ -615,7 +640,7 @@ h2 {
 }
 
 .screen h2 {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 700;
   margin-bottom: 14px;
   color: var(--authority);
@@ -899,7 +924,7 @@ h2 {
   border: 1px dashed rgba(43, 58, 103, 0.38);
   color: var(--authority);
   font-weight: 700;
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   overflow-wrap: anywhere;
 }
 
@@ -1133,6 +1158,8 @@ h2 {
 
   .siteNav {
     position: static;
+    min-width: 0;
+    flex-shrink: 1;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -1144,6 +1171,8 @@ h2 {
 
   .siteNav a {
     padding: 10px 12px;
+    white-space: nowrap;
+    min-width: 0;
   }
 
   .siteNav .navCta {
@@ -1194,7 +1223,7 @@ h2 {
   .demoAside h3 {
     margin: 0 0 8px;
     color: var(--authority);
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-weight: 700;
     font-size: 1.3rem;
   }
@@ -1292,3 +1321,97 @@ h2 {
     padding-right: max(32px, calc((100vw - 1160px) / 2));
   }
 }
+
+
+/* Institutional civic tech refinements */
+.logo {
+  gap: 10px;
+  color: #1E293B;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+
+.readyCheck {
+  flex: 0 0 auto;
+  color: #059669;
+  stroke: #059669;
+  margin-top: 1px;
+}
+
+.siteFooter {
+  display: block;
+  padding: 42px 18px 28px;
+  border-top: 0;
+  background: #0F172A;
+  color: #CBD5E1;
+}
+
+.footerGrid {
+  width: min(100% - 0px, 1160px);
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+}
+
+.footerGrid h3 {
+  margin: 0 0 10px;
+  color: #F8FAFC;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.footerGrid p,
+.footerGrid li {
+  color: #CBD5E1;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.footerGrid p {
+  margin: 0;
+}
+
+.footerGrid ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.footerDisclaimer {
+  width: min(100% - 0px, 1160px);
+  margin: 28px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(148, 163, 184, 0.24);
+  color: #94A3B8;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+@media (min-width: 680px) {
+  .footerGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .siteFooter {
+    display: block;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+h1,
+h2,
+.sectionLead h2,
+.journeyIntro h2,
+.screen h2,
+.demoAside h3 {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 800;
+}
+
