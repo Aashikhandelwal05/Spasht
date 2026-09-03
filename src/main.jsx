@@ -20,6 +20,7 @@ import {
   X,
 } from 'lucide-react';
 import heroScene from './assets/civic-service-scene.svg';
+import spashLogo from './assets/spasht-logo.png';
 import './styles.css';
 
 const steps = [
@@ -268,17 +269,56 @@ function HelperNote({ title, children }) {
   );
 }
 
+function SpashLogo({ height = 44 }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height={height}
+      viewBox="0 0 220 60"
+      aria-label="Spasht"
+      role="img"
+      style={{ display: 'block', overflow: 'visible' }}
+    >
+      {/* Icon: rounded square */}
+      <rect x="0" y="4" width="52" height="52" rx="10" ry="10" fill="#1E2D6B" />
+      {/* Document lines */}
+      <rect x="14" y="16" width="24" height="3.5" rx="1.5" fill="white" opacity="0.9" />
+      <rect x="14" y="23" width="18" height="3.5" rx="1.5" fill="white" opacity="0.7" />
+      <rect x="14" y="30" width="20" height="3.5" rx="1.5" fill="white" opacity="0.7" />
+      <rect x="14" y="37" width="14" height="3.5" rx="1.5" fill="white" opacity="0.5" />
+      {/* Red badge */}
+      <circle cx="42" cy="42" r="11" fill="#C0392B" />
+      <polyline points="36.5,42 40,46 47.5,37" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Wordmark */}
+      <text
+        x="64"
+        y="32"
+        fontFamily="'Inter', 'Segoe UI', sans-serif"
+        fontWeight="700"
+        fontSize="26"
+        fill="#1E2D6B"
+        letterSpacing="0.5"
+      >Spasht</text>
+      {/* Tagline */}
+      <text
+        x="65"
+        y="48"
+        fontFamily="'Inter', 'Segoe UI', sans-serif"
+        fontWeight="400"
+        fontSize="10.5"
+        fill="#7B8DB0"
+        letterSpacing="1.2"
+      >KNOW · CHECK · APPLY</text>
+    </svg>
+  );
+}
+
 function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
     <header className="siteHeader">
       <div className="logo" role="link" tabIndex="0" onClick={() => window.location.hash = 'top'} onKeyDown={(event) => event.key === 'Enter' && (window.location.hash = 'top')} aria-label="Spasht home">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="16" cy="16" r="13" fill="#B23A34" />
-          <circle cx="16" cy="16" r="12" stroke="#8F2F2A" strokeWidth="1" />
-          <path d="M10.5 16.2L14.2 19.8L21.8 11.9" stroke="#FAFAF8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <span>Spasht</span>
+        <SpashLogo height={48} />
       </div>
       <button className="menuButton" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-label="Open navigation">
         {open ? <X size={22} /> : <Menu size={22} />}
@@ -774,7 +814,7 @@ function Footer() {
     <footer className="siteFooter">
       <div className="footerGrid">
         <div>
-          <h3>Spasht</h3>
+          <SpashLogo height={52} />
         </div>
         <div>
           <h3>Technical Architecture</h3>
